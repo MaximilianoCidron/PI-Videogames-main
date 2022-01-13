@@ -1,0 +1,46 @@
+.background-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing {  
+    width: 100%;
+    height: 100%;
+    top: 0;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+}
+
+.logo {
+    max-width: 500px; 
+    max-height: 250px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    top: 30%;
+    left: 40px;
+}
+
+.btn_home{
+    position: absolute;
+    top: 75%;
+    left: 250px;
+    padding: 15px 60px;
+    border-radius: 8px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-transform: uppercase;
+    font-size: 100%;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+    transition: transform 250ms ease;
+}
+
+.btn_home:hover{
+    background-color: rgb(22, 22, 22);
+    color: rgb(185, 185, 185);
+    transform: scale(1.1, 1.1);
+}
