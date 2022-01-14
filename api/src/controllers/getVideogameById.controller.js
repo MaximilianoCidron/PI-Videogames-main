@@ -38,7 +38,7 @@ const getVideogameById = async (req, res, next) => {
         id: videogame.data.id,
         name: videogame.data.name,
         background_image: videogame.data.background_image,
-        description: videogame.data.description_raw,
+        description: videogame.data.description,
         released: videogame.data.released,
         rating: videogame.data.rating,
         genres: videogame.data.genres?.map((genres) => {

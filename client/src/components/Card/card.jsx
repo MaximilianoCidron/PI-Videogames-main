@@ -15,7 +15,7 @@ export default function Card({
                 <img src={background_image} alt={name} />
                  <div className={styles.card_info}>
                     <h3>{name}</h3>
-                    <p>{genres.name.join(", ")}</p>
+                    <p>{genres.name.join(" / ")}</p>
                     <p>{rating}</p>
                  </div>
             </Link>
