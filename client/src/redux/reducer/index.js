@@ -117,8 +117,8 @@ function rootReducer(state = initialState, { type, payload }) {
     case ORDER_BY_RATING: {
       const sortedByRating =
         payload === "High"
-          ? [...state.videogames].sort((a, b) => b.rating - a.rating)
-          : [...state.videogames].sort((a, b) => a.rating - b.rating);
+          ? [...state.videogames].sort((a, b) => a.rating - b.rating)
+          : [...state.videogames].sort((a, b) => b.rating - a.rating);
       return {
         ...state,
         videogames: sortedByRating,
