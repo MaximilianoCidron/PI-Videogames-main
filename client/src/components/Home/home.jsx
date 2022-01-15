@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllGames } from "../../redux/actions/index.js";
 import Card from "../../components/Card/card.jsx";
+import Paginate from "./paginate.jsx";
 import FilterDb from "../Filters/filterdb.jsx";
 import FilterGenre from "../Filters/filtergenre.jsx";
 import FilterPlatform from "../Filters/filterplatform.jsx";
@@ -14,6 +15,19 @@ export default function Home() {
   const dispatch = useDispatch();
 
   const allVideogames = useSelector((state) => state.videogames);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [videogamesPerPage, setVideogamesPerPage] = useState(15);
+  const indexOfLastVideogame = currentPage * videogamesPerPage;
+  const indexOfFirstVideogame = indexOfLastVideogame - videogamesPerPage;
+  const currentVideogames = allVideogames.slice(
+    indexOfFirstVideogame,
+    indexOfLastVideogame
+  );
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   useEffect(() => {
     dispatch(getAllGames());
@@ -34,7 +48,7 @@ export default function Home() {
         Reload games
       </button>
 
-      <div>
+      <div className={styles.filters}>
         <FilterDb />
         <FilterGenre />
         <FilterPlatform />
@@ -42,16 +56,24 @@ export default function Home() {
         <OrderByRating />
       </div>
 
-      {allVideogames?.map((videogame) => {
-        return (
-          <Card
-            background_image={videogame.background_image}
-            name={videogame.name}
-            genres={videogame.genres}
-            rating={videogame.rating}
-          />
-        );
-      })}
+      <div className={styles.cards}>
+        {currentVideogames?.map((videogame) => {
+          return (
+            <Card
+              background_image={videogame.background_image}
+              name={videogame.name}
+              genres={videogame.genres}
+              rating={videogame.rating}
+            />
+          );
+        })}
+      </div>
+
+      <Paginate
+        recipesPerPage={videogamesPerPage}
+        allRecipes={allVideogames.length}
+        paginate={paginate}
+      />
     </div>
   );
 }

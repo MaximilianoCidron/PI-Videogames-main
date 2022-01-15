@@ -65,11 +65,16 @@ function rootReducer(state = initialState, { type, payload }) {
         payload === "All"
           ? filterVideogames
           : filterVideogames.filter((videogame) => {
-              return videogame.genres?.includes(payload);
+              for (let i = 0; i < videogame.genres.length; i++) {
+                if (videogame.genres[i].name === payload) {
+                  return true;
+                }
+              }
+              return false;
             });
       return {
         ...state,
-        filterVideogames: genreFilter,
+        videogames: genreFilter,
       };
     }
     case FILTER_BY_PLATFORM: {
@@ -78,11 +83,16 @@ function rootReducer(state = initialState, { type, payload }) {
         payload === "All"
           ? filterVideogames
           : filterVideogames.filter((videogame) => {
-              return videogame.platforms?.includes(payload);
+              for (let i = 0; i < videogame.platforms.length; i++) {
+                if (videogame.platforms[i].name === payload) {
+                  return true;
+                }
+              }
+              return false;
             });
       return {
         ...state,
-        filterVideogames: platformFilter,
+        videogames: platformFilter,
       };
     }
     case FILTER_DB: {
@@ -117,8 +127,8 @@ function rootReducer(state = initialState, { type, payload }) {
     case ORDER_BY_RATING: {
       const sortedByRating =
         payload === "High"
-          ? [...state.videogames].sort((a, b) => a.rating - b.rating)
-          : [...state.videogames].sort((a, b) => b.rating - a.rating);
+          ? [...state.videogames].sort((a, b) => b.rating - a.rating)
+          : [...state.videogames].sort((a, b) => a.rating - b.rating);
       return {
         ...state,
         videogames: sortedByRating,
