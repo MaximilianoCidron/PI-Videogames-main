@@ -121,7 +121,7 @@ function rootReducer(state = initialState, { type, payload }) {
             });
       return {
         ...state,
-        videogames: sortedByName,
+        videogames: payload === "-" ? state.videogames : sortedByName,
       };
     }
     case ORDER_BY_RATING: {
@@ -131,7 +131,7 @@ function rootReducer(state = initialState, { type, payload }) {
           : [...state.videogames].sort((a, b) => a.rating - b.rating);
       return {
         ...state,
-        videogames: sortedByRating,
+        videogames: payload === "-" ? state.videogames : sortedByRating,
       };
     }
     default: {

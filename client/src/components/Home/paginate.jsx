@@ -12,9 +12,9 @@ export default function Paginate({ recipesPerPage, allRecipes, paginate }) {
     <nav>
       <ul className={styles.pagination}>
         {pageNumbers?.map((number) => (
-          <li key={number}>
+          <div key={number} className={styles.number}>
             <button  onClick={() => paginate(number)}>{number}</button>
-          </li>
+          </div>
         ))}
       </ul>
     </nav>

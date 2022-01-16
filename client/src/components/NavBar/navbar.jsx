@@ -17,7 +17,7 @@ export default function Navbar() {
         <Link to="/videogame">+ Videogame</Link>
         <Link to="/about">About</Link>
       </div>
-      {/* <SearchBar /> */}
+      <SearchBar />
     </div>
   );
 }
