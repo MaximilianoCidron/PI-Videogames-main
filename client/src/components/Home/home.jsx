@@ -60,12 +60,15 @@ export default function Home() {
       <div className={styles.cards}>
         {currentVideogames?.map((videogame) => {
           return (
-            <Card
-              background_image={videogame.background_image}
-              name={videogame.name}
-              genres={videogame.genres}
-              rating={videogame.rating}
-            />
+            <div key={videogame.id}>
+              <Card
+                id={videogame.id}
+                background_image={videogame.background_image}
+                name={videogame.name}
+                genres={videogame.genres}
+                rating={videogame.rating}
+              />
+            </div>
           );
         })}
       </div>

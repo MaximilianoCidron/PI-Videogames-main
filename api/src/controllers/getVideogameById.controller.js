@@ -4,10 +4,11 @@ const { API_KEY } = process.env;
 const { Videogame, Genre, Platform } = require("../db.js");
 
 const getVideogameById = async (req, res, next) => {
-  const { idVideogame } = req.params;
+  const { id } = req.params;
+  const apiInfoArray = [];
   try {
-    if (idVideogame.includes("-")) {
-      const videogame = await Videogame.findByPk(idVideogame, {
+    if (id.includes("-")) {
+      const videogame = await Videogame.findByPk(id, {
         include: [
           {
             model: Genre,
@@ -26,34 +27,39 @@ const getVideogameById = async (req, res, next) => {
       if (!videogame) {
         return res.status(404).json({ message: "Videogame not found" });
       }
-      return res.status(200).json(videogame);
+      return res.status(200).send([videogame]);
     } else {
-      const videogame = await axios.get(
-        `https://api.rawg.io/api/games/${idVideogame}?key=${API_KEY}`
+      const apiInfo = await axios.get(
+        `https://api.rawg.io/api/games/${id}?key=${API_KEY}`
       );
+      apiInfoArray.push(apiInfo.data);
+
+      const apiData = apiInfoArray.map((game) => {
+        return {
+          id: game.id,
+          name: game.name,
+          background_image: game.background_image,
+          description: game.description_raw,
+          released: game.released,
+          rating: game.rating,
+          genres: game.genres?.map((genres) => {
+            return {
+              name: genres.name,
+            };
+          }),
+          platforms: game.platforms?.map((platforms) => {
+            return {
+              name: platforms.platform.name,
+            };
+          }),
+        };
+      });
+      const videogame = apiData.filter((game) => game.id == id);
+
       if (!videogame) {
         return res.status(404).json({ message: "Videogame not found" });
       }
-      return res.status(200).json({
-        id: videogame.data.id,
-        name: videogame.data.name,
-        background_image: videogame.data.background_image,
-        description: videogame.data.description,
-        released: videogame.data.released,
-        rating: videogame.data.rating,
-        genres: videogame.data.genres?.map((genres) => {
-          return {
-            id: genres.id,
-            name: genres.name,
-          };
-        }),
-        platforms: videogame.data.platforms?.map((platforms) => {
-          return {
-            id: platforms.platform.id,
-            name: platforms.platform.name,
-          };
-        }),
-      });
+      return res.status(200).send(videogame);
     }
   } catch (error) {
     next(new Error(`Error ${error.message}`));

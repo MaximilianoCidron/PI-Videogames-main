@@ -23,7 +23,7 @@ const { conn, Genre, Platform } = require("./src/db.js");
 const { API_KEY } = process.env;
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(async () => {
+conn.sync({ force: false }).then(async () => {
   // add Genres to the database
   const verifyGenres = await Genre.findAll();
   if (!verifyGenres.length) {

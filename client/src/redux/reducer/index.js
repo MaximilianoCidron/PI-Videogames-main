@@ -17,7 +17,7 @@ const initialState = {
   filterVideogames: [],
   genres: [],
   platforms: [],
-  details: {},
+  videogame: [],
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -38,7 +38,7 @@ function rootReducer(state = initialState, { type, payload }) {
     case GET_GAME_BY_ID: {
       return {
         ...state,
-        details: payload,
+        videogame: payload,
       };
     }
     case GET_GENRES: {
