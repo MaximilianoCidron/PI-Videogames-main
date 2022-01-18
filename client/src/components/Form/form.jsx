@@ -10,12 +10,16 @@ import styles from "./form.module.css";
 
 function validate(input) {
   const errors = {};
-  !input.name ? (errors.name = "Name is required") : (errors.name = "");
-  !input.background_image || typeof input.background_image !== "string"
-    ? (errors.background_image = "Image is required")
+  !input.name || !/^[A-Za-z]+$/.test(input.name)
+    ? (errors.name = "Name is required and must contain text")
+    : (errors.name = "");
+  !input.background_image ||
+  typeof input.background_image !== "string" ||
+  !/^[A-Za-z]+$/.test(input.background_image)
+    ? (errors.background_image = "Image URL is required")
     : (errors.background_image = "");
-  !input.description
-    ? (errors.description = "Description is required")
+  !input.description || !/^[A-Za-z]+$/.test(input.description)
+    ? (errors.description = "Description is required and must contain text")
     : (errors.description = "");
   !input.released
     ? (errors.released = "Release date is required")
@@ -125,8 +129,8 @@ export default function Form() {
 
   return (
     <div className={styles.background}>
-      <h1>Add a new videogame!</h1>
-      <form onSubmit={(event) => handleSubmit(event)}>
+      <form className={styles.form} onSubmit={(event) => handleSubmit(event)}>
+        <h1>Add a new videogame!</h1>
         <div>
           <label>Name: </label>
           <input

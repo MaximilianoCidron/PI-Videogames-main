@@ -41,20 +41,19 @@ export default function Home() {
 
   return (
     <div>
-      <button
-        onClick={(event) => {
-          handleClick(event);
-        }}
-      >
-        Reload games
-      </button>
-
       <div className={styles.filters}>
         <FilterDb />
         <FilterGenre />
         <FilterPlatform />
         <OrderByName />
         <OrderByRating />
+        <button
+          onClick={(event) => {
+            handleClick(event);
+          }}
+        >
+          Reload games
+        </button>
       </div>
 
       <div className={styles.cards}>

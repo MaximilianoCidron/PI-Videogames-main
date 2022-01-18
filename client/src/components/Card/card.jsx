@@ -6,7 +6,7 @@ export default function Card({ id, background_image, name, genres, rating }) {
   return (
     <div className={styles.card}>
       <Link to={`/videogame/${id}`}>
-        <img src={background_image} alt={name} width="350" height="200" />
+        <img src={background_image} alt={name} width="500" height="300" />
         <h3>{name}</h3>
       </Link>
       <div className={styles.card_info}>
