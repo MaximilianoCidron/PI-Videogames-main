@@ -14,7 +14,10 @@ export default function OrderByName() {
   return (
     <div className={styles.filter}>
       <span>Order: </span>
-      <select onChange={(event) => handleOrderByName(event)}>
+      <select
+        className={styles.select_input}
+        onChange={(event) => handleOrderByName(event)}
+      >
         <option default value="-">
           -
         </option>

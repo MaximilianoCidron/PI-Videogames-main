@@ -45,7 +45,7 @@
     color: var(--text-color);
 }
 .navbar :hover{
-    border-bottom: 10px solid rgba(137, 55, 160, 0.344);
+    border-bottom: 10px solid rgba(129, 0, 165, 0.344);
     font-size: 1.8rem;
     color: var(--text-color);
 }
@@ -71,7 +71,7 @@
     color: var(--text-color);
 }
 .navbar2 :hover{
-    border-bottom: 10px solid rgba(137, 55, 160, 0.344);
+    border-bottom: 10px solid rgba(129, 0, 165, 0.344);
     font-size: 1.8rem;
     color: var(--text-color);
 }

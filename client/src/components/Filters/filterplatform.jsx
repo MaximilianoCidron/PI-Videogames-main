@@ -20,7 +20,10 @@ export default function FilterPlatform() {
   return (
     <div className={styles.filter}>
       <span>Platform: </span>
-      <select onChange={(event) => handleFilterPlatform(event)}>
+      <select
+        className={styles.select_input}
+        onChange={(event) => handleFilterPlatform(event)}
+      >
         <option default value="All">
           All
         </option>

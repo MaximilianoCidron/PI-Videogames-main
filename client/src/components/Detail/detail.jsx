@@ -67,7 +67,7 @@ export default function Detail() {
               <div>Released</div> {videogames[0].released}
             </div>
             <div className={styles.data}>
-              <div>Rating</div> {videogames[0].rating}
+              <div>Rating</div>★{videogames[0].rating}
             </div>
             <div className={styles.data}>
               <div>Genres</div>

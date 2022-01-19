@@ -20,7 +20,10 @@ export default function FilterGenre() {
   return (
     <div className={styles.filter}>
       <span>Genre: </span>
-      <select onChange={(event) => handleFilterGenre(event)}>
+      <select
+        className={styles.select_input}
+        onChange={(event) => handleFilterGenre(event)}
+      >
         <option default value="All">
           All
         </option>

@@ -14,7 +14,7 @@ export default function FilterDb() {
   return (
     <div className={styles.filter}>
       <span>From: </span>
-      <select onChange={(event) => handleFilterDb(event)}>
+      <select className={styles.select_input} onChange={(event) => handleFilterDb(event)}>
         <option default value="All">
           All
         </option>

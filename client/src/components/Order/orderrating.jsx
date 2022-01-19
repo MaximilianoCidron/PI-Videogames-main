@@ -14,7 +14,10 @@ export default function OrderByRating() {
   return (
     <div className={styles.filter}>
       <span>Rating: </span>
-      <select onChange={(event) => handleOrderByRating(event)}>
+      <select
+        className={styles.select_input}
+        onChange={(event) => handleOrderByRating(event)}
+      >
         <option default value="-">
           -
         </option>

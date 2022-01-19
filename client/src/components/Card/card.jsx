@@ -11,7 +11,7 @@ export default function Card({ id, background_image, name, genres, rating, creat
       </Link>
       <div className={styles.card_info}>
         <p>{genres.map((genre) => `${genre.name} `).join(" / ")}</p>
-        <p>{rating}</p>
+        <p>⭐{rating}⭐</p>
       </div>
     </div>
   );
