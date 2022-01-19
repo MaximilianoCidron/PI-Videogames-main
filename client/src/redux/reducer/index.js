@@ -10,6 +10,7 @@ import {
   FILTER_DB,
   ORDER_BY_NAME,
   ORDER_BY_RATING,
+  DELETE_GAME,
 } from "../actions/index.js";
 
 const initialState = {
@@ -132,6 +133,12 @@ function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         videogames: payload === "-" ? state.videogames : sortedByRating,
+      };
+    }
+    case DELETE_GAME: {
+      return {
+        ...state,
+        videogames: [...state.videogames, payload],
       };
     }
     default: {

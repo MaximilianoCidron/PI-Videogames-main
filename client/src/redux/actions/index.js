@@ -11,6 +11,7 @@ export const FILTER_BY_PLATFORM = "FILTER_BY_PLATFORM";
 export const FILTER_DB = "FILTER_DB";
 export const ORDER_BY_NAME = "ORDER_BY_NAME";
 export const ORDER_BY_RATING = "ORDER_BY_RATING";
+export const DELETE_GAME = "DELETE_GAME";
 
 export const getAllGames = () => async (dispatch) => {
   try {
@@ -123,3 +124,15 @@ export const orderByRating = (payload) => {
     payload,
   };
 };
+
+export const deleteGame = (id) => async (dispatch) => {
+  try {
+    const response = await axios.delete(`http://localhost:3001/delete/${id}`);
+    return dispatch({
+      type: DELETE_GAME,
+      payload: response.data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}

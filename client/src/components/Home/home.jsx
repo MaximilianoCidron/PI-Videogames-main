@@ -62,10 +62,12 @@ export default function Home() {
             <div key={videogame.id}>
               <Card
                 id={videogame.id}
+                key={videogame.id}
                 background_image={videogame.background_image}
                 name={videogame.name}
                 genres={videogame.genres}
                 rating={videogame.rating}
+                createdInDb={videogame.createdDb}
               />
             </div>
           );
