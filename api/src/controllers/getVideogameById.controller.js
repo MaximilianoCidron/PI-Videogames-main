@@ -54,7 +54,7 @@ const getVideogameById = async (req, res, next) => {
           }),
         };
       });
-      const videogame = apiData.filter((game) => game.id == id);
+      const videogame = apiData.filter((game) => game.id == id); //Utilize == instead of === to avoid error when id is a string and not a number 
 
       if (!videogame) {
         return res.status(404).json({ message: "Videogame not found" });

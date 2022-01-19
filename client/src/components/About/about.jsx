@@ -27,10 +27,10 @@ export default function About() {
           >
             the Videogames API
           </a>
-          . The user can create a new videogames, filter by platform or genre
-          and order by name or rating. Future projects will include creating a
-          login system and a user profile, so that users can save their favorite
-          videogames and make guides for them that they can share with others.
+          . The user can create new videogames, filter them by platform or genre
+          and order them by name or rating. Future projects will include creating a
+          log-in system and a user profile, where people will be able to save their favorite
+          games, make guides about them and share them with other players.
         </p>
         <p>
           Any feedback provided will be greatly appreciated. I hope you enjoy
