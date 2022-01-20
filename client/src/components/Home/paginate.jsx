@@ -13,7 +13,12 @@ export default function Paginate({ recipesPerPage, allRecipes, paginate }) {
       <ul className={styles.pagination}>
         {pageNumbers?.map((number) => (
           <div key={number} className={styles.number}>
-            <button  onClick={() => paginate(number)}>{number}</button>
+            <button
+              className={styles.button_page}
+              onClick={() => paginate(number)}
+            >
+              {number}
+            </button>
           </div>
         ))}
       </ul>

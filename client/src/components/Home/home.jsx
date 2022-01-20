@@ -10,6 +10,8 @@ import FilterPlatform from "../Filters/filterplatform.jsx";
 import OrderByName from "../Order/ordername.jsx";
 import OrderByRating from "../Order/orderrating.jsx";
 import styles from "./home.module.css";
+import LoadingBar from "../../assets/LoadingBar.gif";
+import RefreshGif from "../../assets/RefreshGif.gif";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -40,45 +42,56 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <div className={styles.filters}>
-        <FilterDb />
-        <FilterGenre />
-        <FilterPlatform />
-        <OrderByName />
-        <OrderByRating />
-        <button
-          onClick={(event) => {
-            handleClick(event);
-          }}
-        >
-          Reload games
-        </button>
-      </div>
-
-      <div className={styles.cards}>
-        {currentVideogames?.map((videogame) => {
-          return (
-            <div key={videogame.id}>
-              <Card
-                id={videogame.id}
-                key={videogame.id}
-                background_image={videogame.background_image}
-                name={videogame.name}
-                genres={videogame.genres}
-                rating={videogame.rating}
-                createdInDb={videogame.createdDb}
-              />
+    <div className={styles.loading_background}>
+      {allVideogames.length > 0 ? (
+        <div className={styles.background}>
+          <div className={styles.container}>
+            <div className={styles.filters}>
+              <FilterDb />
+              <FilterGenre />
+              <FilterPlatform />
+              <OrderByName />
+              <OrderByRating />
+              <button
+              className={styles.reload}
+                onClick={(event) => {
+                  handleClick(event);
+                }}
+              >
+                <img src={RefreshGif} alt="Refresh" height="50px" width="50px" />
+              </button>
             </div>
-          );
-        })}
-      </div>
 
-      <Paginate
-        recipesPerPage={videogamesPerPage}
-        allRecipes={allVideogames.length}
-        paginate={paginate}
-      />
+            <div className={styles.cards}>
+              {currentVideogames?.map((videogame) => {
+                return (
+                  <div key={videogame.id}>
+                    <Card
+                      id={videogame.id}
+                      key={videogame.id}
+                      background_image={videogame.background_image}
+                      name={videogame.name}
+                      genres={videogame.genres}
+                      rating={videogame.rating}
+                      createdInDb={videogame.createdDb}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+
+            <Paginate
+              recipesPerPage={videogamesPerPage}
+              allRecipes={allVideogames.length}
+              paginate={paginate}
+            />
+          </div>
+        </div>
+      ) : (
+        <div>
+          <img className={styles.loading} src={LoadingBar} alt="Loading" />
+        </div>
+      )}
     </div>
   );
 }

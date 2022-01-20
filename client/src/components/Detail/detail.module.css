@@ -46,16 +46,16 @@
   left: 135px;
   padding: 16px 20px;
   font-size: 21px;
-  background: rgba(0, 0, 0, 0.864);
+  background: #202020;
   border: none;
   border-radius: 20px;
   width: 70%;
   height: 600px;
   box-sizing: border-box;
-  color: #fff;
+  color: azure;
+  text-align: left;
   overflow: hidden;
   scroll-behavior: smooth;
-  text-align: left;
 }
 
 .data {
@@ -64,13 +64,13 @@
   padding: 16px 20px;
   font-size: 26px;
   text-align: justify;
-  background: rgba(0, 0, 0, 0.953);
+  background: #202020;
   border: none;
   border-radius: 20px;
   width: 70%;
   height: 9rem;
   box-sizing: border-box;
-  color: #fff;
+  color: azure;
 }
 
 .delete_button {
@@ -83,13 +83,13 @@
   left: 30rem;
   border-style: hidden;
   border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.953);
+  background-color: #202020;
   cursor: pointer;
   transition: 0.5s;
 }
 .delete_button:hover {
   color: rgb(0, 0, 0);
-  transform: scale(0.9, 0.9);
+  transform: scale(0.99, 0.99);
   box-shadow: inset 0px 0px 150px 5px rgba(255, 0, 0, 0.357);
 }
 
@@ -104,13 +104,13 @@
   left: 50rem;
   border-style: hidden;
   border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.953);
+  background-color: #202020;
   cursor: pointer;
   transition: 0.5s;
 }
 .create_button:hover {
   color: rgb(0, 0, 0);
-  transform: scale(0.9, 0.9);
+  transform: scale(0.99, 0.99);
   box-shadow: inset 0px 0px 150px 5px rgba(255, 255, 255, 0.563);
 }
 .create_button :active {

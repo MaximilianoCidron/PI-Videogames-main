@@ -59,10 +59,10 @@ export default function Detail() {
               width="950px"
               height="600px"
             />
-            <text className={styles.description}>
-              <div>Description</div>
+            <div className={styles.description}>
+              <div>About</div>
               {videogames[0].description}
-            </text>
+            </div>
             <div className={styles.data}>
               <div>Released</div> {videogames[0].released}
             </div>

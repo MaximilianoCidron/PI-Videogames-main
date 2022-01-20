@@ -1,8 +1,6 @@
 .pagination {
-  display: grid;
+  padding-top: 30px;
   gap: 1rem;
-  grid-auto-rows: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(0.5rem, 0.4rem));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,4 +14,19 @@
   float: left;
   padding: 0.3rem 5px;
   cursor: pointer;
+}
+
+.button_page{
+  font-size: 35px;
+  background: #1a1a1a;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: azure;
+}
+.button_page :hover{
+  color: black;
+  box-shadow: inset 0px 0px 150px 5px rgba(255, 255, 255, 0.563);
 }
