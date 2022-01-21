@@ -30,7 +30,13 @@ textarea {
   margin-left: 10px;
   color: rgb(155, 0, 0);
   font-size: small;
-  font-weight: 400;
+  font-weight: 600;
+}
+.label_error_form {
+  margin-left: 10px;
+  color: rgb(155, 0, 0);
+  font-size: xx-large;
+  font-weight: 600;
 }
 
 .input {

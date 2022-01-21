@@ -18,6 +18,9 @@ export default function Home() {
 
   const allVideogames = useSelector((state) => state.videogames);
 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
   const [currentPage, setCurrentPage] = useState(1);
   // eslint-disable-next-line no-unused-vars
   const [videogamesPerPage, setVideogamesPerPage] = useState(15);
@@ -33,7 +36,13 @@ export default function Home() {
   };
 
   useEffect(() => {
-    dispatch(getAllGames());
+    dispatch(getAllGames())
+      .then(() => {
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   }, [dispatch]);
 
   const handleClick = (event) => {
@@ -41,57 +50,63 @@ export default function Home() {
     dispatch(getAllGames());
   };
 
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (loading) {
+    return (
+      <div>
+        <img className={styles.loading} src={LoadingBar} alt="Loading" />
+      </div>
+    );
+  }
+
   return (
     <div className={styles.loading_background}>
-      {allVideogames.length > 0 ? (
-        <div className={styles.background}>
-          <div className={styles.container}>
-            <div className={styles.filters}>
-              <FilterDb />
-              <FilterGenre />
-              <FilterPlatform />
-              <OrderByName />
-              <OrderByRating />
-              <button
+      <div className={styles.background}>
+        <div className={styles.container}>
+          <div className={styles.filters}>
+            <FilterDb />
+            <FilterGenre />
+            <FilterPlatform />
+            <OrderByName />
+            <OrderByRating />
+            <button
               className={styles.reload}
-                onClick={(event) => {
-                  handleClick(event);
-                }}
-              >
-                <img src={RefreshGif} alt="Refresh" height="50px" width="50px" />
-              </button>
-            </div>
-
-            <div className={styles.cards}>
-              {currentVideogames?.map((videogame) => {
-                return (
-                  <div key={videogame.id}>
-                    <Card
-                      id={videogame.id}
-                      key={videogame.id}
-                      background_image={videogame.background_image}
-                      name={videogame.name}
-                      genres={videogame.genres}
-                      rating={videogame.rating}
-                      createdInDb={videogame.createdDb}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-
-            <Paginate
-              recipesPerPage={videogamesPerPage}
-              allRecipes={allVideogames.length}
-              paginate={paginate}
-            />
+              onClick={(event) => {
+                handleClick(event);
+              }}
+            >
+              <img src={RefreshGif} alt="Refresh" height="50px" width="50px" />
+            </button>
           </div>
+
+          <div className={styles.cards}>
+            {currentVideogames?.map((videogame) => {
+              return (
+                <div key={videogame.id}>
+                  <Card
+                    id={videogame.id}
+                    key={videogame.id}
+                    background_image={videogame.background_image}
+                    name={videogame.name}
+                    genres={videogame.genres}
+                    rating={videogame.rating}
+                    createdInDb={videogame.createdDb}
+                  />
+                </div>
+              );
+            })}
+          </div>
+
+          <Paginate
+            recipesPerPage={videogamesPerPage}
+            allRecipes={allVideogames.length}
+            paginate={paginate}
+          />
         </div>
-      ) : (
-        <div>
-          <img className={styles.loading} src={LoadingBar} alt="Loading" />
-        </div>
-      )}
+      </div>
     </div>
   );
 }

@@ -308,7 +308,7 @@ export default function Form() {
           errors.rating ||
           errors.genres ||
           errors.platforms) ? (
-          <p className={styles.label_error}>
+          <p className={styles.label_error_form}>
             Please fill in all the fields correctly!
           </p>
         ) : (

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -7,6 +7,7 @@ import {
   getAllGames,
 } from "../../redux/actions/index.js";
 import styles from "./detail.module.css";
+import LoadingBar from "../../assets/LoadingBar.gif";
 
 export default function Detail() {
   const { id } = useParams();
@@ -15,8 +16,17 @@ export default function Detail() {
 
   const videogames = useSelector((state) => state.videogame);
 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
   useEffect(() => {
-    dispatch(getGameById(id));
+    dispatch(getGameById(id))
+      .then(() => {
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   }, [dispatch, id]);
 
   const handleDelete = (event) => {
@@ -45,6 +55,18 @@ export default function Detail() {
   // let parser = new DOMParser();
   // let doc = parser.parseFromString(detail.description, "text/html");
   // let description = doc.body.innerText;
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (loading) {
+    return (
+      <div>
+        <img className={styles.loading} src={LoadingBar} alt="Loading" />
+      </div>
+    );
+  }
 
   return (
     <div className={styles.loading_background}>
@@ -95,9 +117,7 @@ export default function Detail() {
             )}
           </div>
         </div>
-      ) : (
-        null
-      )}
+      ) : null}
     </div>
   );
 }

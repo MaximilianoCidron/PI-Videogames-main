@@ -1,5 +1,7 @@
 .loading {
-  padding-top: 200px;
+  position: relative;
+  height: 50%;
+  width: 100%;
 }
 .loading_background {
   background-color: rgb(0, 0, 0);
