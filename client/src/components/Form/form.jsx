@@ -26,10 +26,10 @@ function validate(input) {
   !input.rating || input.rating < 0 || input.rating > 5
     ? (errors.rating = "*Rating is required and must be between 0 and 5")
     : (errors.rating = "");
-  !input.genres || input.genres.length < 1
+  !input.genres || input.genres.length < 0
     ? (errors.genres = "*Genre/s are required")
     : (errors.genres = "");
-  !input.platforms || input.platforms.length < 1
+  !input.platforms || input.platforms.length < 0
     ? (errors.platforms = "*Platform/s are required")
     : (errors.platforms = "");
   return errors;
@@ -38,8 +38,10 @@ function validate(input) {
 export default function Form() {
   const dispatch = useDispatch();
   const history = useHistory();
+
   const genres = useSelector((state) => state.genres);
   const platforms = useSelector((state) => state.platforms);
+
   const [errors, setErrors] = useState({});
 
   const [input, setInput] = useState({
@@ -79,7 +81,7 @@ export default function Form() {
     );
     setInput({
       ...input,
-      genres: [...input.genres, event.target.value],
+      genres: Array.from(new Set([...input.genres, event.target.value])),
     });
   };
 
@@ -92,7 +94,7 @@ export default function Form() {
     );
     setInput({
       ...input,
-      platforms: [...input.platforms, event.target.value],
+      platforms: Array.from(new Set([...input.platforms, event.target.value])),
     });
   };
 

@@ -3,6 +3,8 @@
 }
 .loading_background {
   background-color: rgb(0, 0, 0);
+  background-image: url("../../assets/LoadingBar.gif");
+  background-size: cover;
   height: 70rem;
 }
 
@@ -22,7 +24,7 @@
   margin-left: 0px;
   margin-right: 0px;
   background-color: rgba(17, 17, 17, 0.974);
-  box-shadow: inset 0px 0px 500px 5px rgba(57, 0, 114, 0.446);
+  box-shadow: inset 0px 0px 500px 50px rgba(75, 0, 150, 0.439);
   color: whitesmoke;
 }
 

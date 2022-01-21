@@ -7,7 +7,6 @@ import {
   getAllGames,
 } from "../../redux/actions/index.js";
 import styles from "./detail.module.css";
-import Loading from "../../assets/Loading.gif";
 
 export default function Detail() {
   const { id } = useParams();
@@ -36,8 +35,9 @@ export default function Detail() {
   //     ? (stars.rating = `${rating} ★★☆☆☆`)
   //     : rating >= 3 && rating < 4
   //     ? (stars.rating = `${rating} ★★★☆☆`)
-  //     : rating >= 4 && rating < 5
+  //     : rating >= 4 && rating <= 4.5
   //     ? (stars.rating = `${rating} ★★★★☆`)
+  //     : rating > 4.5
   //     : (stars.rating = `${rating} ★★★★★`);
   //   return stars;
   // }
@@ -96,9 +96,7 @@ export default function Detail() {
           </div>
         </div>
       ) : (
-        <div>
-          <img className={styles.loading} src={Loading} alt="Loading" />
-        </div>
+        null
       )}
     </div>
   );

@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import styles from "./landing.module.css";
 import LandingBackground from "../../assets/LandingBackground.gif";
 import StartLanding from "../../assets/StartLanding.gif";
+import PressStart from "../../assets/PressStart.png";
 
 export default function Landing() {
   return (
-    <div className="landing">
+    <div className={styles.landing}>
       <img
         className={styles.landing}
         src={LandingBackground}
@@ -15,7 +16,6 @@ export default function Landing() {
       <Link to="/home">
         <button className={styles.btn_home}>
           <img
-            className={styles.bbtn_home}
             src={StartLanding}
             alt="StartButton"
             width="185px"
@@ -23,6 +23,9 @@ export default function Landing() {
           />
         </button>
       </Link>
+      <div>
+        <img className={styles.pressstart} src={PressStart} alt="PressStart" width="600px" height="200px" />
+      </div>
     </div>
   );
 }
