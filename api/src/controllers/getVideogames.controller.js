@@ -11,12 +11,13 @@ const getVideogames = async (req, res, next) => {
       const gamesFromDb = await Videogame.findAll({
         where: {
           name: {
-            [Op.or]: {
-              [Op.like]: ` %${name}% `,
-              [Op.iLike]: ` %${name} `,
-              [Op.substring]: ` ${name} `,
-              [Op.substring]: ` ${name[0].toUpperCase() + name.substring(1)} `,
-            },
+            // [Op.or]: {
+            //   [Op.like]: ` %${name}% `,
+            //   [Op.iLike]: ` %${name} `,
+            //   [Op.substring]: ` ${name} `,
+            //   [Op.substring]: ` ${name[0].toUpperCase() + name.substring(1)} `,
+            // },
+            [Op.iLike]: `%${name}%`,
           },
         },
         include: [

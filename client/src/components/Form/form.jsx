@@ -17,7 +17,7 @@ function validate(input) {
     ? (errors.background_image = "*Image URL is required")
     : (errors.background_image = "");
   !input.description ||
-  !/^[A-Za-z0-9:;,.<>/?'"() -_ ]+$/.test(input.description)
+  !/^[A-Za-z0-9:;,.<>/?'"() ü é á í ó ú -_ ]+$/.test(input.description)
     ? (errors.description = "*Description is required and must contain text")
     : (errors.description = "");
   !input.released
@@ -26,10 +26,10 @@ function validate(input) {
   !input.rating || input.rating < 0 || input.rating > 5
     ? (errors.rating = "*Rating is required and must be between 0 and 5")
     : (errors.rating = "");
-  !input.genres || input.genres.length < 0
+  !input.genres || input.genres.length <= 0
     ? (errors.genres = "*Genre/s are required")
     : (errors.genres = "");
-  !input.platforms || input.platforms.length < 0
+  !input.platforms || input.platforms.length <= 0
     ? (errors.platforms = "*Platform/s are required")
     : (errors.platforms = "");
   return errors;
@@ -73,29 +73,29 @@ export default function Form() {
   };
 
   const handleGenreSelect = (event) => {
+    setInput({
+      ...input,
+      genres: [...input.genres, event.target.value],
+    });
     setErrors(
       validate({
         ...input,
         [event.target.genres]: event.target.value,
       })
     );
-    setInput({
-      ...input,
-      genres: Array.from(new Set([...input.genres, event.target.value])),
-    });
   };
 
   const handlePlatformSelect = (event) => {
+    setInput({
+      ...input,
+      platforms: [...input.platforms, event.target.value],
+    });
     setErrors(
       validate({
         ...input,
         [event.target.platforms]: event.target.value,
       })
     );
-    setInput({
-      ...input,
-      platforms: Array.from(new Set([...input.platforms, event.target.value])),
-    });
   };
 
   const handleGenreDelete = (element) => {
