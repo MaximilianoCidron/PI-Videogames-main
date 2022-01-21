@@ -60,6 +60,7 @@ export default function Form() {
   }, [dispatch]);
 
   const handleChange = (event) => {
+    event.preventDefault();
     setErrors(
       validate({
         ...input,
@@ -73,6 +74,7 @@ export default function Form() {
   };
 
   const handleGenreSelect = (event) => {
+    event.preventDefault();
     setInput({
       ...input,
       genres: [...input.genres, event.target.value],
@@ -86,6 +88,7 @@ export default function Form() {
   };
 
   const handlePlatformSelect = (event) => {
+    event.preventDefault();
     setInput({
       ...input,
       platforms: [...input.platforms, event.target.value],

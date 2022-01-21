@@ -10,6 +10,7 @@ export default function SearchBar() {
   const history = useHistory();
 
   const [name, setName] = useState("");
+  const [error, setError] = useState(false);
 
   const handleInputChange = (event) => {
     event.preventDefault();
@@ -18,13 +19,21 @@ export default function SearchBar() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(getGamesByName(name));
+
+    dispatch(getGamesByName(name))
+      .then((response) => {
+        !response ? setError(true) : setError(false);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
     setName("");
     history.push("/home");
   };
 
   return (
     <div className={styles.searchbar}>
+      {error ? <div>{alert("Game not Found")}</div> : null}
       <input
         className={styles.input}
         type="text"
