@@ -41,10 +41,12 @@
   color: azure;
   position: relative;
   top: 10px;
-  transition: 1s;
+  transition: 2s;
 }
 .reload :hover {
   transform: scale(0.9, 0.9);
+  box-shadow: inset 0px 0px 150px 5px rgba(255, 255, 255, 0.563);
+  border-radius: 50px;
 }
 
 .cards {

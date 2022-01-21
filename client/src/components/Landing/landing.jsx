@@ -24,7 +24,7 @@ export default function Landing() {
         </button>
       </Link>
       <div>
-        <img className={styles.pressstart} src={PressStart} alt="PressStart" width="600px" height="200px" />
+        <img className={styles.pressstart} src={PressStart} alt="PressStart" width="800px" height="200px" />
       </div>
     </div>
   );

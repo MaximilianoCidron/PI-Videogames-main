@@ -17,7 +17,7 @@ function validate(input) {
     ? (errors.background_image = "*Image URL is required")
     : (errors.background_image = "");
   !input.description ||
-  !/^[A-Za-z0-9:;,.<>/?'"() ü é á í ó ú -_ ]+$/.test(input.description)
+  !/^[A-Za-z0-9:;,.<>/?''"() `` ~ {} ü é á í ó ú -_ ]+$/.test(input.description)
     ? (errors.description = "*Description is required and must contain text")
     : (errors.description = "");
   !input.released
