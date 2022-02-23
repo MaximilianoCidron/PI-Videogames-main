@@ -77,7 +77,7 @@ export default function Form() {
     event.preventDefault();
     setInput({
       ...input,
-      genres: [...input.genres, event.target.value],
+      genres: Array.from(new Set([...input.genres, event.target.value])),
     });
     setErrors(
       validate({
@@ -91,7 +91,7 @@ export default function Form() {
     event.preventDefault();
     setInput({
       ...input,
-      platforms: [...input.platforms, event.target.value],
+      platforms: Array.from(new Set([...input.platforms, event.target.value])),
     });
     setErrors(
       validate({

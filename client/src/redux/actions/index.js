@@ -28,7 +28,7 @@ export const getAllGames = () => async (dispatch) => {
 export const getGamesByName = (name) => async (dispatch) => {
   try {
     const response = await axios.get(
-      `http://localhost:3001/videogames?name=${name}`
+      `http://localhost:3001/videogames/:${name}`
     );
     return dispatch({
       type: GET_GAMES_BY_NAME,

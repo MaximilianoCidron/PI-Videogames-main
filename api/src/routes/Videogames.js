@@ -10,6 +10,8 @@ const router = Router();
 
 router.get('/videogames', getVideogames);
 
+router.get('/videogames/:name', getVideogames);
+
 router.get('/videogame/:id', getVideogameById);
 
 router.post('/videogame', postVideogame);
