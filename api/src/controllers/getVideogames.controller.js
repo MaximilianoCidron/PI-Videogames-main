@@ -5,7 +5,7 @@ const { Videogame, Genre, Platform } = require("../db.js");
 const { API_KEY } = process.env;
 
 const getVideogames = async (req, res, next) => {
-  const { name } = req.params;
+  const { name } = req.query;
   if (name) {
     try {
       const gamesFromDb = await Videogame.findAll({
